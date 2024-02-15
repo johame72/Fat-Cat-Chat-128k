@@ -1,3 +1,5 @@
+// src\aws-exports.js
+
 const awsmobile = {
     aws_project_region: 'us-east-2',
     aws_cognito_identity_pool_id: 'us-east-2:486708928239',
