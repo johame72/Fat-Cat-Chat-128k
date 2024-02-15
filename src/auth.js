@@ -1,5 +1,5 @@
 // src/auth.js
-import { Auth } from '@aws-amplify/auth';
+import { Auth } from 'aws-amplify';
 
 export const signIn = async (username, password) => {
   try {
