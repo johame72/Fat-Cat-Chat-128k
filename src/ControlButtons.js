@@ -1,7 +1,6 @@
 // src/ControlButtons.js
 
 import React from 'react';
-import styles from './App.module.css';
 
 const ControlButtons = ({ copyLastResponse, clearConversation }) => (
   <div className="button-container">
