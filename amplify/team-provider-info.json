@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-fatcatchat128k-dev-223855-authRole",
+      "UnauthRoleArn": "arn:aws:iam::486708928239:role/amplify-fatcatchat128k-dev-223855-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::486708928239:role/amplify-fatcatchat128k-dev-223855-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-fatcatchat128k-dev-223855-deployment",
+      "UnauthRoleName": "amplify-fatcatchat128k-dev-223855-unauthRole",
+      "StackName": "amplify-fatcatchat128k-dev-223855",
+      "StackId": "arn:aws:cloudformation:us-east-2:486708928239:stack/amplify-fatcatchat128k-dev-223855/4bcfcb90-cc85-11ee-a3d9-0a292f7a89c3",
+      "AmplifyAppId": "d1ypceb07k1nxw"
+    }
+  }
+}
