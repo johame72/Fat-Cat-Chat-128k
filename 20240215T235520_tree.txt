@@ -13,8 +13,6 @@ Fat-Cat-Chat-128k
 |   |   |   +--- build
 |   |   +--- function
 |   |       \--- fatcatchat128k8aa264b2
-|   |       |   +--- dist
-|   |       |   |   +--- latest-build.zip
 |   |       |   +--- src
 |   |       |       \--- event.json
 |   |       |       \--- index.js
@@ -25,8 +23,6 @@ Fat-Cat-Chat-128k
 |   |       |   +--- fatcatchat128k8aa264b2-cloudformation-template.json
 |   |       |   +--- function-parameters.json
 |   |       \--- fatcatchat128kbc2fc548
-|   |           \--- dist
-|   |           |   +--- latest-build.zip
 |   |           \--- src
 |   |               \--- event.json
 |   |               \--- index.js
@@ -120,6 +116,5 @@ Fat-Cat-Chat-128k
 |   +--- UserContext.js
 +--- .env
 +--- .gitignore
-+--- 20240216T04.52.15Z-Fat-Cat-Chat-128k-all_files.txt
 +--- package-lock.json
 +--- package.json
