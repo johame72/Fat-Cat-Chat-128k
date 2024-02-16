@@ -9,11 +9,14 @@ const SettingsPage = () => {
 
   const handleSaveApiKey = () => {
     setUserApiKey(apiKeyInput);
-    // Save the API key to the backend associated with the user's account
+    // Optionally, save the API key to the backend associated with the user's account
+    // You would typically make an API call here to securely store the API key server-side
+    alert("API Key saved successfully!");
   };
 
   return (
     <div>
+      <h2>Enter Your OpenAI API Key</h2>
       <input
         type="text"
         value={apiKeyInput}
@@ -24,5 +27,7 @@ const SettingsPage = () => {
     </div>
   );
 };
+
+export default SettingsPage;
 
 export default SettingsPage;
