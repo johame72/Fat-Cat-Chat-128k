@@ -4,7 +4,8 @@ import React from 'react';
 import styles from './App.module.css';
 import ChatComponent from './ChatComponent';
 import SignInForm from './SignInForm'; // Import the SignInForm component
-import { Amplify, withAuthenticator } from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import config from './amplifyconfiguration.json';
 
