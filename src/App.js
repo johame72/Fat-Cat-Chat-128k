@@ -6,6 +6,7 @@ import ChatComponent from './ChatComponent';
 import SignInForm from './SignInForm'; // Import the SignInForm component
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
+import { Auth } from '@aws-amplify/auth';
 import '@aws-amplify/ui-react/styles.css';
 import config from './amplifyconfiguration.json';
 
