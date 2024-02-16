@@ -9,7 +9,26 @@
       "UnauthRoleName": "amplify-fatcatchat128k-dev-223855-unauthRole",
       "StackName": "amplify-fatcatchat128k-dev-223855",
       "StackId": "arn:aws:cloudformation:us-east-2:486708928239:stack/amplify-fatcatchat128k-dev-223855/4bcfcb90-cc85-11ee-a3d9-0a292f7a89c3",
-      "AmplifyAppId": "d1ypceb07k1nxw"
+      "AmplifyAppId": "d1ypceb07k1nxw",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-fatcatchat128k-dev-223855-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "function": {
+        "fatcatchat128k8aa264b2": {
+          "deploymentBucketName": "amplify-fatcatchat128k-dev-223855-deployment",
+          "s3Key": "amplify-builds/fatcatchat128k8aa264b2-53567a72596b62514148-build.zip"
+        },
+        "fatcatchat128kbc2fc548": {
+          "deploymentBucketName": "amplify-fatcatchat128k-dev-223855-deployment",
+          "s3Key": "amplify-builds/fatcatchat128kbc2fc548-52784361534b49304539-build.zip"
+        }
+      },
+      "auth": {
+        "fatcatchat128k": {}
+      },
+      "api": {
+        "api26165d2d": {}
+      }
     }
   }
 }

@@ -1,1 +1,90 @@
-{}
+{
+  "api": {
+    "api26165d2d": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "fatcatchat128kbc2fc548"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "fatcatchat128k": {
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "managed"
+    }
+  },
+  "function": {
+    "fatcatchat128k8aa264b2": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "fatcatchat128kbc2fc548": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_fatcatchat128k8aa264b2_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "fatcatchat128k8aa264b2"
+        }
+      ]
+    },
+    "AMPLIFY_function_fatcatchat128k8aa264b2_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "fatcatchat128k8aa264b2"
+        }
+      ]
+    },
+    "AMPLIFY_function_fatcatchat128kbc2fc548_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "fatcatchat128kbc2fc548"
+        }
+      ]
+    },
+    "AMPLIFY_function_fatcatchat128kbc2fc548_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "fatcatchat128kbc2fc548"
+        }
+      ]
+    }
+  }
+}
