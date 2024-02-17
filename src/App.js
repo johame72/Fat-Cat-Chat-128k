@@ -14,7 +14,10 @@ Amplify.configure(config);
 
 function App({ signOut, user }) {
   const [apiKey, setApiKey] = useState('');
-  const currentDate = new Date().toISOString().split('T')[0]; // Format: 'YYYY-MM-DD'
+  const currentDate = new Date();
+  const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+  const formattedDate = currentDate.getDate() + '-' + monthNames[currentDate.getMonth()] + '-' + currentDate.getFullYear();
+  console.log(formattedDate); // Format: '17-FEB-2024'
   
   return (
     <div className={styles.App}>
