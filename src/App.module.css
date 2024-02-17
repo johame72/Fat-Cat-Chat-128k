@@ -5,7 +5,7 @@
 }
 
 button {
-  background-color: #f06292; /* Pink color for buttons */
+  background-color: #fdb9d0; /* Pink color for buttons */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -15,7 +15,7 @@ button {
 }
 
 button:hover {
-  background-color: #e91e63; /* Darker shade of pink on hover */
+  background-color: #f05085; /* Darker shade of pink on hover */
 }
 
 .App-header {

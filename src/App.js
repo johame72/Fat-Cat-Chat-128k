@@ -14,17 +14,18 @@ Amplify.configure(config);
 
 function App({ signOut, user }) {
   const [apiKey, setApiKey] = useState('');
+  const currentDate = new Date().toLocaleDateString();
 
   return (
-    <div className={styles.App}>
-      <header className={styles.AppHeader}>
-        <img src={chatIcon} alt="Chat Icon" style={{ maxWidth: '100px', maxHeight: '100px' }} /> {/* Limit the chat icon to 100 x 100 pixels */}
-        <h1>OpenAI Chat 'gpt-4-0125-preview' 128k Tokens</h1>
-        {/* Display the username and sign out button if the user is signed in */}
+    <div className={styles.App} style={{ padding: '7px' }}>
+      <header className={styles.AppHeader} style={{ marginBottom: '7px' }}>
+        <img src={chatIcon} alt="Chat Icon" style={{ maxWidth: '100px', maxHeight: '100px', marginRight: '7px' }} />
+        <h1 style={{ margin: '7px' }}>Fat Cat Chat</h1>
+        {/* Display the user's name and sign out button if the user is signed in */}
         {user && (
           <>
-            <h2>Hello {user.username}</h2>
-            <button onClick={signOut}>Sign out</button>
+            <h2 style={{ margin: '7px' }}>{user.username}'s Chat - {currentDate}</h2>
+            <button onClick={signOut} style={{ margin: '7px' }}>Sign out</button>
           </>
         )}
         {/* Display the SignInForm component if the user is not signed in */}
@@ -34,6 +35,7 @@ function App({ signOut, user }) {
           value={apiKey}
           onChange={(e) => setApiKey(e.target.value)}
           placeholder="Enter your OpenAI API key"
+          style={{ margin: '7px' }}
         />
         <ChatComponent apiKey={apiKey} />
       </header>
