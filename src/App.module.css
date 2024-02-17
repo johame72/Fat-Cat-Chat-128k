@@ -1,9 +1,8 @@
 /* src/App.module.css */
 
-/* src/App.module.css */
-
 .App {
   background-color: #D6B493; /* Changed to FatCat Tan background #D6B493 */
+  min-height: 100vh; /* Extend background to the bottom of the screen */
 }
 
 button {
@@ -22,10 +21,10 @@ button:hover {
 }
 
 .App-header {
-  /* styles for the header */
   display: flex;
   justify-content: space-between; /* Align items to the ends */
   padding: 7px; /* Added 7px padding */
+  align-items: center; /* Align items vertically */
 }
 
 ul {
@@ -62,4 +61,5 @@ textarea {
   display: flex;
   justify-content: flex-start; /* Align buttons to the start */
   flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  margin: 7px 0; /* Added 7px margin */
 }
