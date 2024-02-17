@@ -8,7 +8,7 @@ import { Amplify } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import config from './amplifyconfiguration.json';
-import chatIcon from './logo.svg'; // Import the chat icon
+import chatIcon from './FatCatRobot.png'; // Import the chat icon
 
 Amplify.configure(config);
 
@@ -18,7 +18,7 @@ function App({ signOut, user }) {
   return (
     <div className={styles.App}>
       <header className={styles.AppHeader}>
-        <img src={chatIcon} alt="Chat Icon" /> {/* Add the chat icon to the header */}
+        <img src={chatIcon} alt="Chat Icon" style={{ maxWidth: '100px', maxHeight: '100px' }} /> {/* Limit the chat icon to 100 x 100 pixels */}
         <h1>OpenAI Chat 'gpt-4-0125-preview' 128k Tokens</h1>
         {/* Display the username and sign out button if the user is signed in */}
         {user && (
