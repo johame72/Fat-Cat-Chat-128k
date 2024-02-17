@@ -33,7 +33,7 @@ function App({ signOut, user }) {
               value={apiKey.replace(/./g, 'X')}
               onChange={(e) => setApiKey(e.target.value)}
               placeholder="Enter your OpenAI API key"
-              style={{ width: '36ch', margin: '0 7px' }}
+              style={{ width: '100px', margin: '0 7px' }}
             />
           </>
         )}
@@ -42,7 +42,7 @@ function App({ signOut, user }) {
       </header>
       {user && (
         <div style={{ margin: '0 7px', display: 'flex', alignItems: 'center' }}>
-          <h2 style={{ marginRight: '10px', margin: 5, fontSize: '1.5rem' }}>{user.username}'s Chat - </h2>
+          <h2 style={{ marginRight: '10px', margin: 5, fontSize: '1.5rem' }}>{user.username}'s Chat: </h2>
           <h2 style={{ margin: 0, fontSize: '1.5rem' }}>{formattedDate}</h2>
         </div>
       )}
