@@ -109,6 +109,7 @@ Fat-Cat-Chat-128k
 |   +--- logo.svg
 |   +--- MessageInput.js
 |   +--- MessagesList.js
+|   +--- Oldauth.js
 |   +--- OriginalChatComponent.js
 |   +--- SettingsPage.js
 |   +--- setupTests.js
