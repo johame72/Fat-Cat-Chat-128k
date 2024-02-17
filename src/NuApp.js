@@ -1,4 +1,4 @@
-// src\App.js
+// New src\App.js
 
 import React, { useState } from 'react';
 import styles from './App.module.css';
@@ -14,10 +14,7 @@ Amplify.configure(config);
 
 function App({ signOut, user }) {
   const [apiKey, setApiKey] = useState('');
-  const currentDate = new Date();
-  const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-  const formattedDate = currentDate.getDate() + '-' + monthNames[currentDate.getMonth()] + '-' + currentDate.getFullYear();
-  console.log(formattedDate); // Format: '17-FEB-2024'
+  const currentDate = new Date().toISOString().split('T')[0]; // Format: 'YYYY-MM-DD'
   
   return (
     <div className={styles.App}>
@@ -43,7 +40,7 @@ function App({ signOut, user }) {
       {user && (
         <div style={{ margin: '0 7px', display: 'flex', alignItems: 'center' }}>
           <h2 style={{ marginRight: '10px', margin: 5, fontSize: '1.5rem' }}>{user.username}'s Chat - </h2>
-          <h2 style={{ margin: 0, fontSize: '1.5rem' }}>{formattedDate}</h2>
+          <h2 style={{ margin: 0, fontSize: '1.5rem' }}>{currentDate}</h2>
         </div>
       )}
 
