@@ -1,6 +1,8 @@
 
 // src/ChatComponent.js
 
+// src/ChatComponent.js
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ControlButtons from './ControlButtons';
@@ -108,10 +110,9 @@ const ChatComponent = ({ apiKey }) => {
           placeholder="Type your message here and press SHIFT+ENTER to send..."
           autoFocus
           rows={3}
-          style={{ marginBottom: '7px' }}
         />
-        <div style={{ marginTop: '7px' }}>
-          <button type="button" className={styles.sendButton} onClick={sendMessage} style={{ border: '1px solid black', marginRight: '7px' }}>Send</button>
+        <div className="button-container" style={{ display: 'flex', justifyContent: 'flex-start', margin: '7px 0' }}>
+          <button type="button" className={styles.sendButton} onClick={sendMessage} style={{ margin: '7px' }}>Send</button>
           <ControlButtons copyLastResponse={copyLastResponse} clearConversation={clearConversation} />
         </div>
       </form>
