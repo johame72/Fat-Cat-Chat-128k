@@ -5,7 +5,7 @@ import React from 'react';
 const ControlButtons = ({ copyLastResponse, clearConversation }) => (
   <div className="button-container">
     <button onClick={copyLastResponse}>Copy</button>
-    <button onClick={clearConversation}>Clear Conversation</button>
+    <button onClick={clearConversation}>Clear</button>
   </div>
 );
 

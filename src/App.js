@@ -8,33 +8,40 @@ import { Amplify } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import config from './amplifyconfiguration.json';
+import chatIcon from './FatCatRobot.png'; // Import the chat icon
 
 Amplify.configure(config);
 
 function App({ signOut, user }) {
   const [apiKey, setApiKey] = useState('');
+  const currentDate = new Date().toISOString().split('T')[0]; // Format: 'YYYY-MM-DD'
 
   return (
     <div className={styles.App}>
-      <header className={styles.AppHeader}>
-        <h1>OpenAI Chat 'gpt-4-0125-preview' 128k Tokens</h1>
-        {/* Display the username and sign out button if the user is signed in */}
+      <header className={styles.AppHeader} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <img src={chatIcon} alt="Chat Icon" style={{ maxWidth: '100px', maxHeight: '100px', marginRight: '7px' }} />
+          <h1 style={{ margin: '0 7px' }}>Fat Cat Chat</h1>
+        </div>
         {user && (
           <>
-            <h2>Hello {user.username}</h2>
-            <button onClick={signOut}>Sign out</button>
+            <div>
+              <h2 style={{ margin: '0 7px' }}>{user.username}'s Chat</h2>
+              <p style={{ margin: '0 7px' }}>{currentDate}</p>
+            </div>
+            <input
+              type="password"
+              value={apiKey.replace(/./g, 'X')}
+              onChange={(e) => setApiKey(e.target.value)}
+              placeholder="Enter your OpenAI API key"
+              style={{ width: '60ch', margin: '0 7px' }}
+            />
           </>
         )}
-        {/* Display the SignInForm component if the user is not signed in */}
         {!user && <SignInForm />}
-        <input
-          type="text"
-          value={apiKey}
-          onChange={(e) => setApiKey(e.target.value)}
-          placeholder="Enter your OpenAI API key"
-        />
-        <ChatComponent apiKey={apiKey} />
+        <button onClick={signOut} style={{ border: '1px solid black', margin: '0 7px' }}>Sign out</button>
       </header>
+      <ChatComponent apiKey={apiKey} />
     </div>
   );
 }

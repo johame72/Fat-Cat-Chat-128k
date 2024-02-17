@@ -109,7 +109,6 @@ Fat-Cat-Chat-128k
 |   +--- logo.svg
 |   +--- MessageInput.js
 |   +--- MessagesList.js
-|   +--- Oldauth.js
 |   +--- OriginalChatComponent.js
 |   +--- SettingsPage.js
 |   +--- setupTests.js
@@ -117,5 +116,6 @@ Fat-Cat-Chat-128k
 |   +--- UserContext.js
 +--- .env
 +--- .gitignore
++--- 20240217T04.51.25Z-Fat-Cat-Chat-128k-all_files.txt
 +--- package-lock.json
 +--- package.json

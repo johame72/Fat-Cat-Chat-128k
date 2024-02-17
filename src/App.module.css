@@ -1,7 +1,30 @@
 /* src/App.module.css */
 
+.App {
+  background-color: #D6B493; /* Changed to FatCat Tan background #D6B493 */
+  min-height: 100vh; /* Extend background to the bottom of the screen */
+}
+
+button {
+  background-color: #fdb9d0; /* Pink color for buttons */
+  color: white;
+  border: 1px solid black; /* Added dark border */
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 7px; /* Added 7px margin */
+}
+
+button:hover {
+  background-color: #f05085; /* Darker shade of pink on hover */
+}
+
 .App-header {
-  /* styles for the header */
+  display: flex;
+  justify-content: space-between; /* Align items to the ends */
+  padding: 7px; /* Added 7px padding */
+  align-items: center; /* Align items vertically */
 }
 
 ul {
@@ -11,32 +34,34 @@ ul {
 
 li {
   margin: 5px 0;
+  padding-left: 7px; /* Ensure padding at the far left of each new line */
 }
 
 li.user {
   color: blue;
+  padding-left: 7px; /* Enforcing padding for text on new lines */
 }
 
 li.assistant {
   color: green;
+  padding-left: 7px;
 }
 
 form {
   display: flex;
+  flex-direction: column; /* Changed to column layout */
 }
 
-input,
-textarea {
+input, textarea {
   flex-grow: 1;
   padding: 10px;
-  margin-right: 5px;
+  margin: 7px 0; /* Updated margin */
+  width: calc(100% - 22px); /* Adjust width for padding */
 }
 
-.button-container button {
-  padding: 10px;
-  margin-right: 20px; /* 20px space between buttons */
-}
-
-.button-container button:last-child {
-  margin-right: 0; /* No space after the last button */
+.button-container {
+  display: flex;
+  justify-content: flex-start; /* Align buttons to the start */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  margin: 7px 0; /* Added 7px margin */
 }

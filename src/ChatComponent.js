@@ -1,4 +1,3 @@
-
 // src/ChatComponent.js
 
 import React, { useState, useEffect } from 'react';
@@ -93,11 +92,16 @@ const ChatComponent = ({ apiKey }) => {
       <ul className={styles.messageList}>
         {messages.map((msg, index) => (
           <li key={index} className={msg.role === 'user' ? styles.user : styles.assistant}>
-            {msg.content}
+            {msg.content.split('\n').map((line, i) => (
+              <React.Fragment key={i}>
+                {line}
+                {i < msg.content.split('\n').length - 1 && <br />}
+              </React.Fragment>
+            ))}
           </li>
         ))}
       </ul>
-      {isTiming && <p className={styles.timer}>Timing: {timer} seconds</p>}
+      {isTiming && <p className={styles.timer}>Response Time: {timer} seconds</p>}
       {responseTime !== null && <p className={styles.responseTime}>Response Time: {responseTime} seconds</p>}
       <form className={styles.messageForm} onSubmit={(e) => e.preventDefault()}>
         <textarea
@@ -109,9 +113,11 @@ const ChatComponent = ({ apiKey }) => {
           autoFocus
           rows={3}
         />
-        <button type="button" className={styles.sendButton} onClick={sendMessage}>Send</button>
+        <div className="button-container" style={{ display: 'flex', justifyContent: 'flex-start', margin: '7px 0' }}>
+          <button type="button" className={styles.sendButton} onClick={sendMessage} style={{ margin: '7px' }}>Send</button>
+          <ControlButtons copyLastResponse={copyLastResponse} clearConversation={clearConversation} />
+        </div>
       </form>
-      <ControlButtons copyLastResponse={copyLastResponse} clearConversation={clearConversation} />
     </div>
   );
 };
