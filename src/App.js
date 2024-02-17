@@ -38,11 +38,12 @@ function App({ signOut, user }) {
         <button onClick={signOut} style={{ border: '1px solid black', margin: '0 7px' }}>Sign out</button>
       </header>
       {user && (
-        <div style={{ margin: '0 7px' }}>
-          <h2>{user.username}'s Chat</h2>
-          <p>{currentDate}</p>
+        <div style={{ margin: '0 7px', display: 'flex', alignItems: 'center' }}>
+          <h2 style={{ marginRight: '10px' }}>{user.username}'s Chat</h2>
+          <p style={{ margin: 0 }}>{currentDate}</p>
         </div>
       )}
+
       <ChatComponent apiKey={apiKey} />
     </div>
   );
