@@ -1,13 +1,12 @@
+
 // src/ChatComponent.js
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ControlButtons from './ControlButtons';
 import styles from './App.module.css';
-import { useUser } from './UserContext'; // Import the useUser hook
 
-const ChatComponent = () => {
-  const { userApiKey } = useUser(); // Access the user's API key from the context
+const ChatComponent = ({ apiKey }) => {
   const [inputValue, setInputValue] = useState('');
   const [messages, setMessages] = useState([]);
   const [timer, setTimer] = useState(0);
@@ -17,7 +16,7 @@ const ChatComponent = () => {
   const openai = axios.create({
     baseURL: 'https://api.openai.com/v1/',
     headers: {
-      'Authorization': `Bearer ${userApiKey}` // Use the user-provided API key
+      'Authorization': `Bearer ${apiKey}`
     }
   });
 

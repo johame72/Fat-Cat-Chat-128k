@@ -1,6 +1,6 @@
 // src/App.js
 
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './App.module.css';
 import ChatComponent from './ChatComponent';
 import SignInForm from './SignInForm'; // Import the SignInForm component
@@ -12,6 +12,8 @@ import config from './amplifyconfiguration.json';
 Amplify.configure(config);
 
 function App({ signOut, user }) {
+  const [apiKey, setApiKey] = useState('');
+
   return (
     <div className={styles.App}>
       <header className={styles.AppHeader}>
@@ -25,7 +27,13 @@ function App({ signOut, user }) {
         )}
         {/* Display the SignInForm component if the user is not signed in */}
         {!user && <SignInForm />}
-        <ChatComponent />
+        <input
+          type="text"
+          value={apiKey}
+          onChange={(e) => setApiKey(e.target.value)}
+          placeholder="Enter your OpenAI API key"
+        />
+        <ChatComponent apiKey={apiKey} />
       </header>
     </div>
   );
