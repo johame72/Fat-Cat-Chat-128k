@@ -37,9 +37,14 @@ li {
   padding-left: 7px; /* Ensure padding at the far left of each new line */
 }
 
-li.user, li.assistant {
+li.user {
   color: blue;
   padding-left: 7px; /* Enforcing padding for text on new lines */
+}
+
+li.assistant {
+  color: green;
+  padding-left: 7px;
 }
 
 form {
