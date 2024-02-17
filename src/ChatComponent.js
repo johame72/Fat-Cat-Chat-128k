@@ -1,4 +1,3 @@
-
 // src/ChatComponent.js
 
 import React, { useState, useEffect } from 'react';
@@ -47,35 +46,32 @@ const ChatComponent = ({ apiKey }) => {
     const userMessage = inputValue;
     if (!userMessage.trim()) return;
 
-    // Replace newline characters with HTML line break tags
-    const formattedMessage = userMessage.replace(/\n/g, '<br />');
-
-    const updatedMessages = [...messages, { role: 'user', content: formattedMessage }];
+    const updatedMessages = [...messages, { role: 'user', content: userMessage }];
     setMessages(updatedMessages);
     setInputValue('');
     setIsTiming(true); // Start timing
 
     try {
-        const startTime = Date.now();
-        const response = await openai.post('chat/completions', {
-            model: 'gpt-4-0125-preview',
-            messages: updatedMessages.map(msg => ({ role: msg.role, content: msg.content })),
-        });
-        const endTime = Date.now();
-        const duration = (endTime - startTime) / 1000; // Calculate duration in seconds
+      const startTime = Date.now();
+      const response = await openai.post('chat/completions', {
+        model: 'gpt-4-0125-preview',
+        messages: updatedMessages.map(msg => ({ role: msg.role, content: msg.content })),
+      });
+      const endTime = Date.now();
+      const duration = (endTime - startTime) / 1000; // Calculate duration in seconds
 
-        setResponseTime(duration); // Set response time
-        setIsTiming(false); // Stop timing
+      setResponseTime(duration); // Set response time
+      setIsTiming(false); // Stop timing
 
-        const assistantMessage = response.data.choices[0].message.content;
-        if (assistantMessage) {
-            setMessages(msgs => [...msgs, { role: 'assistant', content: assistantMessage }]);
-        }
+      const assistantMessage = response.data.choices[0].message.content;
+      if (assistantMessage) {
+        setMessages(msgs => [...msgs, { role: 'assistant', content: assistantMessage }]);
+      }
     } catch (error) {
-        console.error("Error fetching chat completion:", error);
-        setIsTiming(false); // Stop timing if there's an error
+      console.error("Error fetching chat completion:", error);
+      setIsTiming(false); // Stop timing if there's an error
     }
-};
+  };
 
   const copyLastResponse = () => {
     const lastMessage = messages.find(msg => msg.role === 'assistant');
@@ -96,7 +92,12 @@ const ChatComponent = ({ apiKey }) => {
       <ul className={styles.messageList}>
         {messages.map((msg, index) => (
           <li key={index} className={msg.role === 'user' ? styles.user : styles.assistant}>
-            {msg.content}
+            {msg.content.split('\n').map((line, i) => (
+              <React.Fragment key={i}>
+                {line}
+                {i < msg.content.split('\n').length - 1 && <br />}
+              </React.Fragment>
+            ))}
           </li>
         ))}
       </ul>
