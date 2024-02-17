@@ -32,7 +32,7 @@ function App({ signOut, user }) {
               type="password"
               value={apiKey.replace(/./g, 'X')}
               onChange={(e) => setApiKey(e.target.value)}
-              placeholder="Enter your OpenAI API key"
+              placeholder="API Key"
               style={{ width: '100px', margin: '0 7px' }}
             />
           </>
