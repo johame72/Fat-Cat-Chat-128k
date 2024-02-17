@@ -74,20 +74,6 @@ const ChatComponent = ({ apiKey }) => {
     }
   };
 
-  const copyLastResponse = () => {
-    const lastMessage = messages.find(msg => msg.role === 'assistant');
-    if (lastMessage && navigator.clipboard) {
-      navigator.clipboard.writeText(lastMessage.content);
-    }
-  };
-
-  const clearConversation = () => {
-    setMessages([]);
-    setTimer(0); // Reset timer
-    setIsTiming(false); // Ensure timing is stopped
-    setResponseTime(null); // Reset response time
-  };
-
   return (
     <div className={styles.chatComponent}>
       <ul className={styles.messageList}>
@@ -108,10 +94,13 @@ const ChatComponent = ({ apiKey }) => {
           placeholder="Type your message here and press SHIFT+ENTER to send..."
           autoFocus
           rows={3}
+          style={{ marginBottom: '7px' }}
         />
-        <button type="button" className={styles.sendButton} onClick={sendMessage}>Send</button>
+        <div className="button-container" style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <button type="button" className={styles.sendButton} onClick={sendMessage} style={{ border: '1px solid black', margin: '7px' }}>Send</button>
+          <ControlButtons copyLastResponse={copyLastResponse} clearConversation={clearConversation} />
+        </div>
       </form>
-      <ControlButtons copyLastResponse={copyLastResponse} clearConversation={clearConversation} />
     </div>
   );
 };
