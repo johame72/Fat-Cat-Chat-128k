@@ -39,8 +39,8 @@ function App({ signOut, user }) {
       </header>
       {user && (
         <div style={{ margin: '0 7px', display: 'flex', alignItems: 'center' }}>
-          <h2 style={{ marginRight: '10px', margin: 0, fontSize: '1.5rem' }}>{user.username}'s Chat</h2>
-          <p style={{ margin: 0, fontSize: '1.5rem' }}>{currentDate}</p>
+          <h2 style={{ marginRight: '10px', margin: 0, fontSize: '1.5rem' }}>{user.username}'s Chat </h2>
+          <h2 style={{ margin: 0, fontSize: '1.5rem' }}>{currentDate}</h2>
         </div>
       )}
 
