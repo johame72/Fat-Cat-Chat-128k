@@ -34,14 +34,12 @@ ul {
 
 li {
   margin: 5px 0;
+  padding-left: 7px; /* Ensure padding at the far left of each new line */
 }
 
-li.user {
+li.user, li.assistant {
   color: blue;
-}
-
-li.assistant {
-  color: green;
+  padding-left: 7px; /* Enforcing padding for text on new lines */
 }
 
 form {
@@ -49,12 +47,11 @@ form {
   flex-direction: column; /* Changed to column layout */
 }
 
-input,
-textarea {
+input, textarea {
   flex-grow: 1;
   padding: 10px;
   margin: 7px 0; /* Updated margin */
-  width: calc(100% - 14px); /* Adjust width for padding */
+  width: calc(100% - 22px); /* Adjust width for padding */
 }
 
 .button-container {
