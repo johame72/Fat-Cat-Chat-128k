@@ -101,7 +101,7 @@ const ChatComponent = ({ apiKey }) => {
           </li>
         ))}
       </ul>
-      {isTiming && <p className={styles.timer}>Response Time: {timer} seconds</p>}
+      {isTiming && <p className={styles.timer} style={{ marginLeft: '7px' }}>Response Time: {timer} seconds</p>}
       {responseTime !== null && <p className={styles.responseTime} style={{ marginLeft: '7px' }}>Response Time: {responseTime} seconds</p>}
       <form className={styles.messageForm} onSubmit={(e) => e.preventDefault()}>
         <textarea
