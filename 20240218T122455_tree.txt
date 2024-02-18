@@ -109,13 +109,11 @@ Fat-Cat-Chat-128k
 |   +--- logo.svg
 |   +--- MessageInput.js
 |   +--- MessagesList.js
-|   +--- OriginalChatComponent.js
 |   +--- SettingsPage.js
 |   +--- setupTests.js
 |   +--- SignInForm.js
 |   +--- UserContext.js
 +--- .env
 +--- .gitignore
-+--- 20240218T00.32.03Z-Fat-Cat-Chat-128k-all_files.txt
 +--- package-lock.json
 +--- package.json
