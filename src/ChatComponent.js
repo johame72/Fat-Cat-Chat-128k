@@ -102,7 +102,7 @@ const ChatComponent = ({ apiKey }) => {
         ))}
       </ul>
       {isTiming && <p className={styles.timer}>Response Time: {timer} seconds</p>}
-      {responseTime !== null && <p className={styles.responseTime}>Response Time: {responseTime} seconds</p>}
+      {responseTime !== null && <p className={styles.responseTime} style={{ marginLeft: '7px' }}>Response Time: {responseTime} seconds</p>}
       <form className={styles.messageForm} onSubmit={(e) => e.preventDefault()}>
         <textarea
           className={styles.messageInput}
@@ -112,6 +112,7 @@ const ChatComponent = ({ apiKey }) => {
           placeholder="Type your message here and press SHIFT+ENTER to send..."
           autoFocus
           rows={3}
+          style={{marginLeft: '7px'}}
         />
         <div className="button-container" style={{ display: 'flex', justifyContent: 'flex-start', margin: '7px 0' }}>
           <button type="button" className={styles.sendButton} onClick={sendMessage} style={{ margin: '7px' }}>Send</button>
