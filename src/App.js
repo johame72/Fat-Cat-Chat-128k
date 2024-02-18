@@ -29,11 +29,12 @@ function App({ signOut, user }) {
         {user && (
           <>
             <input
+              className={styles.apiKeyInput} // Assuming 'styles' is the imported CSS module
               type="password"
               value={apiKey.replace(/./g, 'X')}
               onChange={(e) => setApiKey(e.target.value)}
               placeholder="API Key"
-              style={{ width: '100px', margin: '0 7px' }}
+              style={{ width: '100px', height: '30px', margin: '0 7px' }}
             />
           </>
         )}

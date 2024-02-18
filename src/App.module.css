@@ -1,5 +1,11 @@
 /* src/App.module.css */
 
+.apiKeyInput {
+  width: 100px;
+  height: 30px;
+  margin: 0 7px;
+}
+
 .AppHeader {
   position: fixed; /* Key property to fix position */
   top: 0; /* Align top edge of header with top of viewport */
