@@ -23,8 +23,8 @@ function App({ signOut, user }) {
     <div className={styles.App}>
       <header className={styles.AppHeader} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <img src={chatIcon} alt="Chat Icon" style={{ maxWidth: '100px', maxHeight: '100px', marginRight: '7px' }} />
-          <h1 style={{ margin: '0 7px' }}>Fat Cat Chat</h1>
+          <img src={chatIcon} alt="Chat Icon" style={{ maxWidth: '90px', maxHeight: '90px', marginRight: '6px' }} />
+          <h1 style={{ margin: '0 6px' }}>Fat Cat Chat</h1>
         </div>
         {user && (
           <>
