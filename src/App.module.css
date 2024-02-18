@@ -23,8 +23,8 @@
 .App {
   background-color: #D6B493; /* Changed to FatCat Tan background #D6B493 */
   min-height: 100vh; /* Extend background to the bottom of the screen */
-  padding-top: 60px; /* Adjust this value based on your header's height */
-  padding-bottom: 60px; /* Adjust based on the actual height of your footer */
+  padding-top: 55px; /* Adjust this value based on your header's height */
+  padding-bottom: 75px; /* Adjust based on the actual height of your footer */
 }
 
 button {

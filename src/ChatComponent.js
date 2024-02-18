@@ -116,8 +116,8 @@ const ChatComponent = ({ apiKey }) => {
           <div className="button-container" style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', margin: '7px 0' }}>
             <button type="button" className={styles.sendButton} onClick={sendMessage} style={{ margin: '7px' }}>Send</button>
             <ControlButtons copyLastResponse={copyLastResponse} clearConversation={clearConversation} />
-            {isTiming && <p className={styles.timer} style={{ marginLeft: '7px', marginBottom: '2px' }}>Response Time: {timer} seconds</p>}
-            {responseTime !== null && <p className={styles.responseTime} style={{ marginLeft: '7px', marginBottom: '2px' }}>Response Time: {responseTime} seconds</p>}
+            {isTiming && <p className={styles.timer} style={{ marginLeft: '7px', marginBottom: '2px', color: 'black' }}>Response Time: {timer} seconds</p>}
+            {responseTime !== null && <p className={styles.responseTime} style={{ marginLeft: '7px', marginBottom: '2px', color: 'black' }}>Response Time: {responseTime} seconds</p>}
           </div>
         </form>
       </footer>
