@@ -6,8 +6,8 @@
 }
 
 button {
-  background-color: #fdb9d0; /* Pink color for buttons */
-  color: white;
+  background-color: #E6844C; /* Pink color for buttons */
+  color: black;
   border: 1px solid black; /* Added dark border */
   padding: 10px 20px;
   border-radius: 5px;
@@ -17,7 +17,7 @@ button {
 }
 
 button:hover {
-  background-color: #f05085; /* Darker shade of pink on hover */
+  background-color: #E5E076; /* Darker shade of pink on hover */
 }
 
 .App-header {
@@ -29,7 +29,7 @@ button:hover {
 
 ul {
   list-style: none;
-  padding: 0;
+  padding: 7px;
 }
 
 li {
@@ -56,7 +56,7 @@ input, textarea {
   flex-grow: 1;
   padding: 10px;
   margin: 7px 0; /* Updated margin */
-  width: calc(100% - 22px); /* Adjust width for padding */
+  width: calc(100px - 22px); /* Adjust width for padding */
 }
 
 .button-container {
