@@ -5,7 +5,7 @@
   top: 0; /* Align top edge of header with top of viewport */
   left: 0; /* Align left edge of header with left of viewport */
   width: 100%; /* Ensure header stretches across full viewport width */
-  background-color: #fff; /* Optionally ensure the header has a background */
+  background-color: #D6B493; /* Optionally ensure the header has a background */
   z-index: 1000; /* Ensure header stays on top of other content */
   box-shadow: 0 2px 4px rgba(0,0,0,.1); /* Optional: Adds shadow for some depth */
   display: flex;
