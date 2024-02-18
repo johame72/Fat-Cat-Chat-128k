@@ -101,26 +101,25 @@ const ChatComponent = ({ apiKey }) => {
           </li>
         ))}
       </ul>
-      <form className={styles.messageForm} onSubmit={(e) => e.preventDefault()}>
-        <textarea
-          className={styles.messageInput}
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Type your message here and press SHIFT+ENTER to send..."
-          autoFocus
-          rows={3}
-          style={{marginLeft: '7px'}}
-        />
-        <div className="button-container" style={{ display: 'flex', justifyContent: 'flex-start', margin: '7px 0' }}>
-          <button type="button" className={styles.sendButton} onClick={sendMessage} style={{ margin: '7px' }}>Send</button>
-          <ControlButtons copyLastResponse={copyLastResponse} clearConversation={clearConversation} />
-        </div>
-        <footer className={styles.chatFooter}>
-          <ControlButtons copyLastResponse={copyLastResponse} clearConversation={clearConversation} />
+      <footer className={styles.chatFooter}>
+        <form className={styles.messageForm} onSubmit={(e) => e.preventDefault()}>
+          <textarea
+            className={styles.messageInput}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="Type your message here and press SHIFT+ENTER to send..."
+            autoFocus
+            rows={3}
+            style={{ marginLeft: '7px' }}
+          />
+          <div className="button-container" style={{ display: 'flex', justifyContent: 'flex-start', margin: '7px 0' }}>
+            <button type="button" className={styles.sendButton} onClick={sendMessage} style={{ margin: '7px' }}>Send</button>
+            <ControlButtons copyLastResponse={copyLastResponse} clearConversation={clearConversation} />
+          </div>
           {responseTime !== null && <p className={styles.responseTime}>Response Time: {responseTime} seconds</p>}
-        </footer>
-      </form>
+        </form>
+      </footer>
     </div>
   );
 };
