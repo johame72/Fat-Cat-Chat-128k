@@ -48,10 +48,6 @@ function App({ signOut, user }) {
       )}
 
       <ChatComponent apiKey={apiKey} />
-      <footer className={styles.chatFooter}>
-      <ControlButtons copyLastResponse={copyLastResponse} clearConversation={clearConversation} />
-      {responseTime !== null && <p className={styles.responseTime}>Response Time: {responseTime} seconds</p>}
-      </footer>
     </div>
   );
 }

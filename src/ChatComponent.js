@@ -101,8 +101,6 @@ const ChatComponent = ({ apiKey }) => {
           </li>
         ))}
       </ul>
-      {isTiming && <p className={styles.timer} style={{ marginLeft: '7px' }}>Response Time: {timer} seconds</p>}
-      {responseTime !== null && <p className={styles.responseTime} style={{ marginLeft: '7px' }}>Response Time: {responseTime} seconds</p>}
       <form className={styles.messageForm} onSubmit={(e) => e.preventDefault()}>
         <textarea
           className={styles.messageInput}
@@ -118,6 +116,10 @@ const ChatComponent = ({ apiKey }) => {
           <button type="button" className={styles.sendButton} onClick={sendMessage} style={{ margin: '7px' }}>Send</button>
           <ControlButtons copyLastResponse={copyLastResponse} clearConversation={clearConversation} />
         </div>
+        <footer className={styles.chatFooter}>
+          <ControlButtons copyLastResponse={copyLastResponse} clearConversation={clearConversation} />
+          {responseTime !== null && <p className={styles.responseTime}>Response Time: {responseTime} seconds</p>}
+        </footer>
       </form>
     </div>
   );
