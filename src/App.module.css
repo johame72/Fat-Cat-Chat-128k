@@ -56,7 +56,7 @@ input, textarea {
   flex-grow: 1;
   padding: 10px;
   margin: 7px 0; /* Updated margin */
-  width: calc(100px - 22px); /* Adjust width for padding */
+  width: calc(98% - 22px); /* Adjust width for padding */
 }
 
 .button-container {
