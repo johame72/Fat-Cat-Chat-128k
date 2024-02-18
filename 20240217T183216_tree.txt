@@ -1,0 +1,121 @@
+Fat-Cat-Chat-128k
++--- amplify
+|   +--- #current-cloud-backend
+|   |   +--- api
+|   |   |   +--- api26165d2d
+|   |   |       \--- build
+|   |   |       \--- cli-inputs.json
+|   |   +--- auth
+|   |   |   +--- fatcatchat128k
+|   |   |       \--- build
+|   |   |       \--- cli-inputs.json
+|   |   +--- awscloudformation
+|   |   |   +--- build
+|   |   +--- function
+|   |       \--- fatcatchat128k8aa264b2
+|   |       |   +--- src
+|   |       |       \--- event.json
+|   |       |       \--- index.js
+|   |       |       \--- package.json
+|   |       |       \--- yarn.lock
+|   |       |   +--- amplify.state
+|   |       |   +--- custom-policies.json
+|   |       |   +--- fatcatchat128k8aa264b2-cloudformation-template.json
+|   |       |   +--- function-parameters.json
+|   |       \--- fatcatchat128kbc2fc548
+|   |           \--- src
+|   |               \--- event.json
+|   |               \--- index.js
+|   |               \--- package.json
+|   |               \--- yarn.lock
+|   |           \--- amplify.state
+|   |           \--- custom-policies.json
+|   |           \--- fatcatchat128kbc2fc548-cloudformation-template.json
+|   |           \--- function-parameters.json
+|   |   +--- amplify-meta.json
+|   |   +--- backend-config.json
+|   |   +--- tags.json
+|   +--- .config
+|   |   +--- local-aws-info.json
+|   |   +--- local-env-info.json
+|   |   +--- project-config.json
+|   +--- backend
+|   |   +--- api
+|   |   |   +--- api26165d2d
+|   |   |       \--- build
+|   |   |       \--- cli-inputs.json
+|   |   |   +--- APIGatewayAuthStack.json
+|   |   +--- auth
+|   |   |   +--- fatcatchat128k
+|   |   |       \--- build
+|   |   |       \--- cli-inputs.json
+|   |   +--- awscloudformation
+|   |   |   +--- build
+|   |   +--- function
+|   |   |   +--- fatcatchat128k8aa264b2
+|   |   |   |   +--- dist
+|   |   |   |   |   +--- latest-build.zip
+|   |   |   |   +--- src
+|   |   |   |       \--- node_modules
+|   |   |   |       \--- event.json
+|   |   |   |       \--- index.js
+|   |   |   |       \--- package.json
+|   |   |   |       \--- yarn.lock
+|   |   |   |   +--- amplify.state
+|   |   |   |   +--- custom-policies.json
+|   |   |   |   +--- fatcatchat128k8aa264b2-cloudformation-template.json
+|   |   |   |   +--- function-parameters.json
+|   |   |   +--- fatcatchat128kbc2fc548
+|   |   |       \--- dist
+|   |   |       |   +--- latest-build.zip
+|   |   |       \--- src
+|   |   |           \--- node_modules
+|   |   |           \--- event.json
+|   |   |           \--- index.js
+|   |   |           \--- package.json
+|   |   |           \--- yarn.lock
+|   |   |       \--- amplify.state
+|   |   |       \--- custom-policies.json
+|   |   |       \--- fatcatchat128kbc2fc548-cloudformation-template.json
+|   |   |       \--- function-parameters.json
+|   |   +--- types
+|   |       \--- amplify-dependent-resources-ref.d.ts
+|   |   +--- amplify-meta.json
+|   |   +--- backend-config.json
+|   |   +--- tags.json
+|   +--- hooks
+|       \--- post-push.sh.sample
+|       \--- pre-push.js.sample
+|   +--- cli.json
+|   +--- team-provider-info.json
++--- build
++--- node_modules
++--- public
+|   +--- favicon.ico
+|   +--- index.html
+|   +--- manifest.json
+|   +--- robots.txt
++--- src
+|   +--- amplifyconfiguration.json
+|   +--- App.js
+|   +--- App.module.css
+|   +--- App.test.js
+|   +--- auth.js
+|   +--- aws-exports.js
+|   +--- ChatComponent.js
+|   +--- ControlButtons.js
+|   +--- index.css
+|   +--- index.js
+|   +--- logo.svg
+|   +--- MessageInput.js
+|   +--- MessagesList.js
+|   +--- OriginalChatComponent.js
+|   +--- SettingsPage.js
+|   +--- setupTests.js
+|   +--- SignInForm.js
+|   +--- UserContext.js
++--- .env
++--- .gitignore
++--- 20240218T00.32.03Z-Fat-Cat-Chat-128k-all_files.txt
++--- package-lock.json
++--- package.json
