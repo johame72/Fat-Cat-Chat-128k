@@ -91,6 +91,7 @@ Fat-Cat-Chat-128k
 +--- build
 +--- node_modules
 +--- public
+|   +--- FatCatRobotIcon.ico
 |   +--- favicon.ico
 |   +--- index.html
 |   +--- manifest.json
@@ -115,5 +116,6 @@ Fat-Cat-Chat-128k
 |   +--- UserContext.js
 +--- .env
 +--- .gitignore
++--- 20240219T04.38.18Z-Fat-Cat-Chat-128k-all_files.txt
 +--- package-lock.json
 +--- package.json
