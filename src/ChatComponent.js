@@ -1,9 +1,10 @@
 // src/ChatComponent.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import ControlButtons from './ControlButtons';
 import styles from './App.module.css';
+import { UserContext } from './UserContext'; // Ensuring we can use the user details
 
 const ChatComponent = ({ apiKey }) => {
   const [inputValue, setInputValue] = useState('');
@@ -11,6 +12,8 @@ const ChatComponent = ({ apiKey }) => {
   const [timer, setTimer] = useState(0);
   const [isTiming, setIsTiming] = useState(false);
   const [responseTime, setResponseTime] = useState(null);
+  const { userApiKey } = useContext(UserContext); // Use userApiKey and possibly other user details for USERNAME
+  const username = "DJChilly"; // Assuming a static username for demonstration; you might want to dynamically fetch this
 
   // Use environment variable for default API key
   const defaultApiKey = process.env.REACT_APP_OPENAI_API_KEY;
@@ -46,15 +49,20 @@ const ChatComponent = ({ apiKey }) => {
     }
   };
 
+  const addMessage = (role, content) => {
+    const timestamp = new Date().toLocaleString('en-US', { hour12: false });
+    const formattedMessage = `${username} ${timestamp}:\n${content}`;
+    setMessages(msgs => [...msgs, { role, content: formattedMessage }]);
+  };
+
   // Update sendMessage considering models based on apiKey presence
   const sendMessage = async () => {
     setIsTiming(false); // Stop the timer if it was running
     setResponseTime(null); // Reset response time for new message
-    const userMessage = inputValue;
-    if (!userMessage.trim()) return;
+    const userMessage = inputValue.trim();
+    if (!userMessage) return;
 
-    const updatedMessages = [...messages, { role: 'user', content: userMessage }];
-    setMessages(updatedMessages);
+    addMessage('user', userMessage);
     setInputValue('');
     setIsTiming(true); // Start timing
 
@@ -65,7 +73,7 @@ const ChatComponent = ({ apiKey }) => {
       const startTime = Date.now();
       const response = await openai.post('chat/completions', {
         model: modelToUse, // Use selected model
-        messages: updatedMessages.map(msg => ({ role: msg.role, content: msg.content })),
+        messages: messages.map(msg => ({ role: msg.role, content: msg.content })),
       });
       const endTime = Date.now();
       const duration = (endTime - startTime) / 1000; // Calculate duration in seconds
@@ -75,7 +83,7 @@ const ChatComponent = ({ apiKey }) => {
 
       const assistantMessage = response.data.choices[0].message.content;
       if (assistantMessage) {
-        setMessages(msgs => [...msgs, { role: 'assistant', content: assistantMessage }]);
+        addMessage('assistant', assistantMessage);
       }
     } catch (error) {
       console.error("Error fetching chat completion:", error);
