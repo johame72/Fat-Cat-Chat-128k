@@ -1,10 +1,10 @@
 // src/ChatComponent.js
 
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ControlButtons from './ControlButtons';
 import styles from './App.module.css';
-import { UserContext } from './UserContext'; // Assuming this context provides user and API key details
+import { useUser } from './UserContext';
 
 const ChatComponent = ({ apiKey: propsApiKey }) => {
   const [inputValue, setInputValue] = useState('');
@@ -13,12 +13,12 @@ const ChatComponent = ({ apiKey: propsApiKey }) => {
   const [isTiming, setIsTiming] = useState(false);
   const [responseTime, setResponseTime] = useState(null);
 
-  // useContext to access username and fallback for username setup
-  const userContext = useContext(UserContext);
-  const username = userContext?.user?.username || "Anonymous"; // Fallback to "Anonymous" if username not found in context
+  // Use the custom hook to access user context
+  const userContext = useUser();
+  const username = "Anonymous"; // Assuming we don't have a username in the provided context structure
 
   // Default API key setup; use .env for security and flexibility
-  const defaultApiKey = process.env.REACT_APP_DEFAULT_API_KEY || "your_default_api_key_here"; // Placeholder for your default API key
+  const defaultApiKey = process.env.YOUR_DEFAULT_API_KEY || "your_default_api_key_here";
   const useApiKey = propsApiKey || userContext?.userApiKey || defaultApiKey;
 
   // Select model based on the API key used
