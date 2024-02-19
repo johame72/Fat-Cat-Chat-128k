@@ -12,10 +12,16 @@ const ChatComponent = ({ apiKey }) => {
   const [isTiming, setIsTiming] = useState(false);
   const [responseTime, setResponseTime] = useState(null);
 
+  // Use environment variable for default API key
+  const defaultApiKey = process.env.REACT_APP_OPENAI_API_KEY;
+  const defaultModel = "gpt-3.5-turbo";
+  const upgradedModel = "gpt-4-0125-preview";
+
   const openai = axios.create({
     baseURL: 'https://api.openai.com/v1/',
     headers: {
-      'Authorization': `Bearer ${apiKey}`
+      // Use provided API key or default if none is provided
+      'Authorization': `Bearer ${apiKey || defaultApiKey}`
     }
   });
 
@@ -40,6 +46,7 @@ const ChatComponent = ({ apiKey }) => {
     }
   };
 
+  // Update sendMessage considering models based on apiKey presence
   const sendMessage = async () => {
     setIsTiming(false); // Stop the timer if it was running
     setResponseTime(null); // Reset response time for new message
@@ -51,10 +58,13 @@ const ChatComponent = ({ apiKey }) => {
     setInputValue('');
     setIsTiming(true); // Start timing
 
+    // Determine which model to use based on apiKey presence
+    const modelToUse = apiKey ? upgradedModel : defaultModel;
+
     try {
       const startTime = Date.now();
       const response = await openai.post('chat/completions', {
-        model: 'gpt-4-0125-preview',
+        model: modelToUse, // Use selected model
         messages: updatedMessages.map(msg => ({ role: msg.role, content: msg.content })),
       });
       const endTime = Date.now();
