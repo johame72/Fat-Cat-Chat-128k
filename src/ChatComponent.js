@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ControlButtons from './ControlButtons';
 import styles from './App.module.css';
-import { useUser } from './UserContext'; // Correctly importing the useUser hook
+import { useUser } from './UserContext'; // Using a hook to access user details
 
 const ChatComponent = ({ apiKey }) => {
   const [inputValue, setInputValue] = useState('');
@@ -13,20 +13,21 @@ const ChatComponent = ({ apiKey }) => {
   const [isTiming, setIsTiming] = useState(false);
   const [responseTime, setResponseTime] = useState(null);
 
-  // Assuming useUser hook provides user details including the username
-  // Adjust according to your actual user context structure
-  // If username is not directly available, you might need to retrieve it via another hook or context depending on your auth setup
-  const { userApiKey, user } = useUser(); // Now also attempting to destructure 'user' from the context
-  const username = user ? user.username : "Anonymous"; // Dynamically sets username, defaults to "Anonymous" if not found
+  // Use the useUser hook to retrieve user details, including apiKey and username
+  const { userApiKey, user } = useUser();
+  const username = user?.username || 'Anonymous'; // Providing a default username if none is found
 
-  const defaultApiKey = process.env.REACT_APP_OPENAI_API_KEY; // Using environment variable for API key, if provided
-  const defaultModel = "gpt-3.5-turbo"; // Default model
-  const upgradedModel = "gpt-4-0125-preview"; // Upgraded model, dynamically selected based on apiKey presence
+  // Default API key and model configuration
+  const defaultApiKey = process.env.REACT_APP_OPENAI_API_KEY || 'YOUR_DEFAULT_API_KEY'; // Ensure you have a fallback key
+  const defaultModel = 'gpt-3.5-turbo';
+  const upgradedModel = 'gpt-4-0125-preview';
+
+  const modelToUse = apiKey || userApiKey ? upgradedModel : defaultModel; // Decide on model based on the presence of any API key
 
   const openai = axios.create({
     baseURL: 'https://api.openai.com/v1/',
     headers: {
-      'Authorization': `Bearer ${apiKey || userApiKey || defaultApiKey}` // Updated to prioritize passed apiKey, then userApiKey, and finally the default
+      'Authorization': `Bearer ${apiKey || userApiKey || defaultApiKey}` // First priority to the specific apiKey prop, then userApiKey, and lastly the default
     }
   });
 
@@ -38,7 +39,8 @@ const ChatComponent = ({ apiKey }) => {
       clearInterval(interval);
       setTimer(0);
     }
-    return () => clearInterval(interval);
+
+    return () => clearInterval(interval); // Cleanup on unmount
   }, [isTiming]);
 
   const handleKeyDown = (e) => {
@@ -51,7 +53,7 @@ const ChatComponent = ({ apiKey }) => {
   const addMessage = (role, content) => {
     const timestamp = new Date().toLocaleString('en-US', { hour12: false });
     const formattedMessage = `${username} ${timestamp}: ${content}`;
-    setMessages(msgs => [...msgs, { role, content: formattedMessage }]);
+    setMessages((msgs) => [...msgs, { role, content: formattedMessage }]);
   };
 
   const sendMessage = async () => {
@@ -64,13 +66,11 @@ const ChatComponent = ({ apiKey }) => {
     setInputValue('');
     setIsTiming(true);
 
-    const modelToUse = apiKey ? upgradedModel : defaultModel;
-
     try {
       const startTime = Date.now();
       const response = await openai.post('chat/completions', {
         model: modelToUse,
-        messages: messages.map(msg => ({ role: msg.role, content: msg.content })),
+        messages: messages.map((msg) => ({ role: msg.role, content: msg.content })),
       });
       const endTime = Date.now();
       const duration = (endTime - startTime) / 1000;
@@ -83,9 +83,23 @@ const ChatComponent = ({ apiKey }) => {
         addMessage('assistant', assistantMessage);
       }
     } catch (error) {
-      console.error("Error fetching chat completion:", error);
+      console.error('Error fetching chat completion:', error);
       setIsTiming(false);
     }
+  };
+
+  const copyLastResponse = () => {
+    const lastMessage = messages.find(msg => msg.role === 'assistant');
+    if (lastMessage && navigator.clipboard) {
+      navigator.clipboard.writeText(lastMessage.content);
+    }
+  };
+
+  const clearConversation = () => {
+    setMessages([]);
+    setTimer(0); // Reset timer
+    setIsTiming(false); // Ensure timing is stopped
+    setResponseTime(null); // Reset response time
   };
 
   return (
@@ -101,12 +115,18 @@ const ChatComponent = ({ apiKey }) => {
       </ul>
       <footer className={styles.chatFooter}>
         <form className={styles.messageForm} onSubmit={(e) => e.preventDefault()}>
-          <textarea className={styles.messageInput} value={inputValue} onChange={(e) => setInputValue(e.target.value)}
-            onKeyDown={handleKeyDown} placeholder="Type your message here and press SHIFT+ENTER to send..." autoFocus rows={2}
-            style={{ marginLeft: '5px' }} />
+          <textarea
+            className={styles.messageInput}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="Type your message here and press SHIFT+ENTER to send..."
+            autoFocus
+            rows={2}
+          />
           <div className="button-container" style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', margin: '7px 0' }}>
             <button type="button" className={styles.sendButton} onClick={sendMessage} style={{ margin: '7px' }}>Send</button>
-            <ControlButtons copyLastResponse={() => {}} clearConversation={() => {}} />
+            <ControlButtons copyLastResponse={copyLastResponse} clearConversation={clearConversation} />
             {isTiming && <p className={styles.timer} style={{ marginLeft: '7px', marginBottom: '2px', color: 'black' }}>Response Time: {timer} seconds</p>}
             {responseTime !== null && <p className={styles.responseTime} style={{ marginLeft: '7px', marginBottom: '2px', color: 'black' }}>Response Time: {responseTime} seconds</p>}
           </div>
