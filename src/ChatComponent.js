@@ -4,74 +4,82 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ControlButtons from './ControlButtons';
 import styles from './App.module.css';
-import { useUser } from './UserContext';
 
-const ChatComponent = ({ apiKey: propsApiKey }) => {
+const ChatComponent = ({ apiKey }) => {
   const [inputValue, setInputValue] = useState('');
   const [messages, setMessages] = useState([]);
   const [timer, setTimer] = useState(0);
   const [isTiming, setIsTiming] = useState(false);
   const [responseTime, setResponseTime] = useState(null);
 
-  // Use the custom hook to access user context
-  const userContext = useUser();
-  const username = "Anonymous"; // Assuming we don't have a username in the provided context structure
-
-  // Default API key setup; use .env for security and flexibility
-  const defaultApiKey = process.env.YOUR_DEFAULT_API_KEY || "your_default_api_key_here";
-  const useApiKey = propsApiKey || userContext?.userApiKey || defaultApiKey;
-
-  // Select model based on the API key used
-  const modelVersion = useApiKey === defaultApiKey ? "gpt-3.5-turbo" : "gpt-4";
+  // Use environment variable for default API key
+  const defaultApiKey = process.env.REACT_APP_OPENAI_API_KEY;
+  const defaultModel = "gpt-3.5-turbo";
+  const upgradedModel = "gpt-4-0125-preview";
 
   const openai = axios.create({
     baseURL: 'https://api.openai.com/v1/',
-    headers: { 'Authorization': `Bearer ${useApiKey}` }
+    headers: {
+      // Use provided API key or default if none is provided
+      'Authorization': `Bearer ${apiKey || defaultApiKey}`
+    }
   });
 
   useEffect(() => {
     let interval;
     if (isTiming) {
-      interval = setInterval(() => setTimer(prevTimer => prevTimer + 1), 1000);
-    } else if (!isTiming && timer !== 0) {
+      interval = setInterval(() => {
+        setTimer(prev => prev + 1);
+      }, 1000);
+    } else {
       clearInterval(interval);
-      setTimer(0);
+      setTimer(0); // Reset timer
     }
+
     return () => clearInterval(interval);
-  }, [isTiming, timer]);
+  }, [isTiming]);
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
+      e.preventDefault(); // Prevent default to avoid a new line being created by the textarea
+      sendMessage(); // Call the send message function
     }
   };
 
-  const addMessage = (role, content) => {
-    const timestamp = new Date().toISOString();
-    const formattedMessage = `${username} ${timestamp}:\n${content}`;
-    setMessages(msgs => [...msgs, { role, content: formattedMessage }]);
-  };
-
+  // Update sendMessage considering models based on apiKey presence
   const sendMessage = async () => {
-    const userMessage = inputValue.trim();
-    if (!userMessage) return;
+    setIsTiming(false); // Stop the timer if it was running
+    setResponseTime(null); // Reset response time for new message
+    const userMessage = inputValue;
+    if (!userMessage.trim()) return;
 
-    addMessage('user', userMessage);
+    const updatedMessages = [...messages, { role: 'user', content: userMessage }];
+    setMessages(updatedMessages);
     setInputValue('');
-    setIsTiming(true); // Start timing response
+    setIsTiming(true); // Start timing
+
+    // Determine which model to use based on apiKey presence
+    const modelToUse = apiKey ? upgradedModel : defaultModel;
 
     try {
+      const startTime = Date.now();
       const response = await openai.post('chat/completions', {
-        model: modelVersion,
-        prompt: userMessage,
-        max_tokens: 150,
+        model: modelToUse, // Use selected model
+        messages: updatedMessages.map(msg => ({ role: msg.role, content: msg.content })),
       });
-      addMessage('assistant', response.data.choices[0].text);
+      const endTime = Date.now();
+      const duration = (endTime - startTime) / 1000; // Calculate duration in seconds
+
+      setResponseTime(duration); // Set response time
+      setIsTiming(false); // Stop timing
+
+      const assistantMessage = response.data.choices[0].message.content;
+      if (assistantMessage) {
+        setMessages(msgs => [...msgs, { role: 'assistant', content: assistantMessage }]);
+      }
     } catch (error) {
-      console.error('Error fetching chat completion:', error);
-    } finally {
-      setIsTiming(false); // Stop timing irrespective of request success or failure
+      console.error("Error fetching chat completion:", error);
+      setIsTiming(false); // Stop timing if there's an error
     }
   };
 
@@ -93,7 +101,7 @@ const ChatComponent = ({ apiKey: propsApiKey }) => {
     <div className={styles.chatComponent}>
       <ul className={styles.messageList}>
         {messages.map((msg, index) => (
-          <li key={index} className={msg.role === 'user' ? styles.userMessage : styles.assistantMessage}>
+          <li key={index} className={msg.role === 'user' ? styles.user : styles.assistant}>
             {msg.content.split('\n').map((line, i) => (
               <React.Fragment key={i}>
                 {line}
@@ -113,10 +121,14 @@ const ChatComponent = ({ apiKey: propsApiKey }) => {
             placeholder="Type your message here and press SHIFT+ENTER to send..."
             autoFocus
             rows={2}
+            style={{ marginLeft: '5px' }}
           />
-          <ControlButtons sendMessage={sendMessage} clearConversation={() => setMessages([])} />
-          {isTiming && <div>Timing response...</div>}
-          {responseTime && <div>Response time: {responseTime} seconds</div>}
+          <div className="button-container" style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', margin: '7px 0' }}>
+            <button type="button" className={styles.sendButton} onClick={sendMessage} style={{ margin: '7px' }}>Send</button>
+            <ControlButtons copyLastResponse={copyLastResponse} clearConversation={clearConversation} />
+            {isTiming && <p className={styles.timer} style={{ marginLeft: '7px', marginBottom: '2px', color: 'black' }}>Response Time: {timer} seconds</p>}
+            {responseTime !== null && <p className={styles.responseTime} style={{ marginLeft: '7px', marginBottom: '2px', color: 'black' }}>Response Time: {responseTime} seconds</p>}
+          </div>
         </form>
       </footer>
     </div>
