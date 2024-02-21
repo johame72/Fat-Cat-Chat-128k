@@ -33,16 +33,16 @@ function App({ signOut, user }) {
               type="password"
               value={apiKey.replace(/./g, 'X')}
               onChange={(e) => setApiKey(e.target.value)}
-              placeholder="API Key"
-              style={{ width: '100px', height: '30px', margin: '0 7px' }}
+              placeholder="Enter OpenAI API Key for GPT-4 128k context"
+              style={{ width: '100px', height: '24px', margin: '0 5px' }}
             />
           </>
         )}
         {!user && <SignInForm />}
-        <button onClick={signOut} style={{ border: '1px solid black', margin: '0 7px' }}>Sign out</button>
+        <button onClick={signOut} style={{ border: '1px solid black', margin: '0 5px' }}>Sign out</button>
       </header>
       {user && (
-        <div style={{ margin: '0 7px', display: 'flex', alignItems: 'center' }}>
+        <div style={{ margin: '0 5px', display: 'flex', alignItems: 'center' }}>
           <h2 style={{ marginRight: '10px', margin: 5, fontSize: '1.2rem' }}>{user.username}'s Chat: </h2>
           <h2 style={{ margin: 0, fontSize: '1.2rem' }}>{formattedDate}</h2>
         </div>
