@@ -2,8 +2,8 @@
 
 .apiKeyInput {
   width: 100px;
-  height: 30px;
-  margin: 0 7px;
+  height: 25px;
+  margin: 0 5px;
 }
 
 .AppHeader {
@@ -77,7 +77,7 @@ li.user {
 }
 
 li.assistant {
-  color: green;
+  color:  black/* green; */
   padding-left: 7px;
 }
 
