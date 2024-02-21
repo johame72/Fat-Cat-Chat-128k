@@ -16,15 +16,15 @@
   box-shadow: 0 2px 4px rgba(0,0,0,.1); /* Optional: Adds shadow for some depth */
   display: flex;
   justify-content: space-between; /* Maintain existing layout */
-  padding: 7px; /* Maintain existing padding */
+  padding: 5px; /* Maintain existing padding */
   align-items: center; /* Maintain vertical alignment of items */
 }
 
 .App {
   background-color: #D6B493; /* Changed to FatCat Tan background #D6B493 */
   min-height: 100vh; /* Extend background to the bottom of the screen */
-  padding-top: 50px; /* Adjust this value based on your header's height */
-  padding-bottom: 75px; /* Adjust based on the actual height of your footer */
+  padding-top: 100px; /* Adjust this value based on your header's height */
+  padding-bottom: 150px; /* Adjust based on the actual height of your footer */
 }
 
 button {
