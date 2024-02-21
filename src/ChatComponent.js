@@ -120,7 +120,7 @@ const ChatComponent = ({ apiKey }) => {
             onKeyDown={handleKeyDown}
             placeholder="Type your message here and press SHIFT+ENTER to send..."
             autoFocus
-            rows={2}
+            rows={1}
             style={{ marginLeft: '5px' }}
           />
           <div className="button-container" style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', margin: '7px 0' }}>

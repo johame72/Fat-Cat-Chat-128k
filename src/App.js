@@ -23,8 +23,8 @@ function App({ signOut, user }) {
     <div className={styles.App}>
       <header className={styles.AppHeader} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <img src={chatIcon} alt="Chat Icon" style={{ maxWidth: '90px', maxHeight: '90px', marginRight: '6px' }} />
-          <h2 style={{ margin: '0 4px' }}>Fat Cat Chat</h2>
+          <img src={chatIcon} alt="Chat Icon" style={{ maxWidth: '80px', maxHeight: '80px', marginRight: '5px' }} />
+          <h2 className={styles.fatCatChatTitle} style={{ margin: '0 4px' }}>Fat Cat Chat</h2>
         </div>
         {user && (
           <>
@@ -43,8 +43,8 @@ function App({ signOut, user }) {
       </header>
       {user && (
         <div style={{ margin: '0 7px', display: 'flex', alignItems: 'center' }}>
-          <h2 style={{ marginRight: '10px', margin: 5, fontSize: '1.5rem' }}>{user.username}'s Chat: </h2>
-          <h2 style={{ margin: 0, fontSize: '1.5rem' }}>{formattedDate}</h2>
+          <h2 style={{ marginRight: '10px', margin: 5, fontSize: '1.2rem' }}>{user.username}'s Chat: </h2>
+          <h2 style={{ margin: 0, fontSize: '1.2rem' }}>{formattedDate}</h2>
         </div>
       )}
 
