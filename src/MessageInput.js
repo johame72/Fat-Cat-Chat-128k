@@ -6,9 +6,9 @@ const MessageInput = ({ inputValue, setInputValue, handleKeyDown }) => (
     value={inputValue}
     onChange={(e) => setInputValue(e.target.value)}
     onKeyDown={handleKeyDown}
-    placeholder="Type your message here and press SHIFT+ENTER to send..."
+    placeholder="Type msg here, SHIFT+ENTER to send.."
     autoFocus
-    rows={3}
+    rows={1}
   />
 );
 

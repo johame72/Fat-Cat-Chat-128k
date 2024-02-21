@@ -118,7 +118,7 @@ const ChatComponent = ({ apiKey }) => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Type your message here and press SHIFT+ENTER to send..."
+            placeholder="Type msg here, SHIFT+ENTER to send.."
             autoFocus
             rows={1}
             style={{ marginLeft: '5px' }}
