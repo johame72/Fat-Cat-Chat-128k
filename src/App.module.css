@@ -99,3 +99,7 @@ input, textarea {
   flex-wrap: wrap; /* Allow wrapping for smaller screens */
   margin: 7px 0; /* Added 7px margin */
 }
+
+.fatCatChatTitle {
+  font-size: 1.2rem;
+}
