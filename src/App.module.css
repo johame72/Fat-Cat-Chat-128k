@@ -1,6 +1,7 @@
 /* src/App.module.css */
 
 .apiKeyInput {
+  flex-grow: 0;
   width: 100px;
   height: 25px;
   margin: 0 5px;
