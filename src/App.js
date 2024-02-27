@@ -40,7 +40,7 @@ function App({ signOut, user }) {
           </>
         )}
         {!user && <SignInForm />}
-        <button onClick={signOut} style={{ border: '1px solid black', margin: '0 5px' }}>Sign out</button>
+        <button onClick={signOut} style={{ border: '1px solid black', margin: '0 5px', alignItems: 'right' }}>Sign out</button>
       </header>
       {user && (
         <div style={{ margin: '0 5px', display: 'flex', alignItems: 'center' }}>
