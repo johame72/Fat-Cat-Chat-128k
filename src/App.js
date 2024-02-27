@@ -31,6 +31,7 @@ function App({ signOut, user }) {
             <input
               className={styles.apiKeyInput}
               type="password"
+              maxLength="20"
               value={apiKey.replace(/./g, 'X')}
               onChange={(e) => setApiKey(e.target.value)}
               placeholder="Enter OpenAI API Key for GPT-4 128k context"

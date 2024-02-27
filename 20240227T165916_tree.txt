@@ -1,0 +1,33 @@
+Fat-Cat-Chat-128k
++--- amplify
++--- build
++--- node_modules
++--- public
+|   +--- FatCatRobotIcon.ico
+|   +--- favicon.ico
+|   +--- index.html
+|   +--- manifest.json
+|   +--- robots.txt
++--- src
+|   +--- amplifyconfiguration.json
+|   +--- App.js
+|   +--- App.module.css
+|   +--- App.test.js
+|   +--- auth.js
+|   +--- aws-exports.js
+|   +--- ChatComponent.js
+|   +--- ControlButtons.js
+|   +--- index.css
+|   +--- index.js
+|   +--- logo.svg
+|   +--- MessageInput.js
+|   +--- MessagesList.js
+|   +--- SettingsPage.js
+|   +--- setupTests.js
+|   +--- SignInForm.js
+|   +--- UserContext.js
++--- .env
++--- .gitignore
++--- 20240222T17.39.04Z-Fat-Cat-Chat-128k-all_files.txt
++--- package-lock.json
++--- package.json
